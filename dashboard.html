@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="style2.css" type="text/css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+  <script>
+    var doc = new jsPDF();
+    
+    function Fun(){
+      window.print();
+    }
+    
+    function myFun() {
+      var a = document.form1.txtname.value;
+      document.getElementById("demoname").innerHTML = a;
+      var c = document.form1.txtins.value;
+      document.getElementById("demoins").innerHTML = c;
+      var d = document.form1.txtbatch.value;
+      document.getElementById("demobatch").innerHTML = d;
+      var e = document.form1.txtoffice.value;
+      document.getElementById("demooffice").innerHTML = e;
+      var f = document.form1.txtweb.value;
+      document.getElementById("demoweb").innerHTML = f;
+      var g = document.form1.txtit.value;
+      document.getElementById("demoit").innerHTML = g;
+      var h = document.form1.txtc.value;
+      document.getElementById("democ").innerHTML = h;
+      var txt1 = eval(
+      parseFloat(document.form1.txtoffice.value) +
+      parseFloat(document.form1.txtweb.value) +
+      parseFloat(document.form1.txtit.value) +
+      parseFloat(document.form1.txtc.value)
+      );
+      document.getElementById("demototal").innerHTML = txt1;
+      var txt2 = eval(parseFloat(txt1 * 100) / 400);
+      document.getElementById("demoper").innerHTML = txt2.toFixed(2) + "%";
+      
+      switch (true) {
+        case txt2 >= 80:
+        document.getElementById("demograde").innerHTML = "A1";
+        break;
+        case txt2 >= 70:
+        document.getElementById("demograde").innerHTML = "A";
+        break;
+        case txt2 >= 60:
+        document.getElementById("demograde").innerHTML = "B";
+        break;
+        case txt2 >= 50:
+        document.getElementById("demograde").innerHTML = "C";
+        break;
+        case txt2 >= 40:
+        document.getElementById("demograde").innerHTML = "D";
+        break;
+        case txt2 < 40:
+        document.getElementById("demograde").innerHTML = "Fail";
+        break;
+      }
+    }
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+<body>
+  <DIV class="color">
+    <H1 align="center"style="font-family:cambria;font-size:40";><U>STUDENT MARKSHEET</H1><br><br><br>
+      
+      <LEGEND> STUDENT INFORMATION </LEGEND>
+      <TABLE align="center" id="tbl">
+        <FORM name="form1">
+        </TR>
+        <TD width="140">NAME</TD> <TD><INPUT type="text" name="txtname"/></TD>
+      </TR>
+      
+      <TR>
+        <TD width="140" >SCHOOL NAME</TD><TD> <INPUT type="text" name="txtins"/></TD>
+      </tr>
+      <tr>
+        <TD style="text-indent:16px">CLASS</TD><TD> <INPUT type="text" name="txtbatch"/></TD>
+      </TR>
+    </TABLE>
+  </BR>
+  
+  <LEGEND> SUBJECTS MARKS </LEGEND>
+  <p>(Enter Marks Out of 100)</p>
+  
+  <TABLE id="tbl2">
+    <TR>
+      <TD style="text-indent:280px">MATHS</TD><TD> <INPUT type="text" name="txtoffice" maxlength="2" size="20"/></TD>
+      
+    </TR>
+    <TR>
+      <TD style="text-indent:280px">SCIENCE</TD><TD>  <INPUT type="text" name="txtweb" maxlength="2" size="20"/></TD>
+    </TR>
+    <TR>
+      <TD style="text-indent:280px">ENGLISH</TD><TD> <INPUT type="text" name="txtit" maxlength="2" size="20"/></TD>
+    </TR>
+    <TR>
+      <TD style="text-indent:280px">HINDI</TD><TD> <INPUT type="text" name="txtc" maxlength="2" size="20" /></TD>
+    </TR>
+    <TR>
+      <TD>&nbsp;</TD>
+    </TR>
+  </TABLE>
+  <br><br>
+  <DIV class="btn">
+    <button style="font-size:17" type="button" onclick='myFun()'>Submit</button>
+    <button style="font-size:17" type="Reset">Reset</button>
+    <button style="font-size:17" type="button" onclick='Fun(print)'>Print</button>
+  </DIV>
+  
+  <TABLE border="1" >
+    <TR>
+      <TH colspan="200" width="240">REPORT CARD</TH>
+    </TR>
+    <TR>
+      <TD width="135">NAME</TD><TD><FONT face="arial" id="demoname"></FONT></TD>
+    </TR>
+    <TR>
+      <TD width="135">SCHOOL NAME</TD><TD><FONT face="arial" id="demoins"></FONT></TD>
+    </TR>
+    <TD width="135">CLASS</TD> <TD><FONT face="arial" id="demobatch"></FONT></TD>
+  </TR>
+  <TR>
+    <TH colspan="8" width="240"> SUBJECT MARKS </TH>
+  </TR>
+  <TR>
+    <TD width="135">MATHS</TD> <TD><FONT face="arial" id="demooffice"></FONT></TD>
+  </TR>
+  <TR>
+    <TD width="135">SCIENCE</TD><TD><FONT face="arial" id="demoweb"></FONT></TD>
+  </TR>
+  <TD width="135">ENGLISH</TD><TD><FONT face="arial" id="demoit"></FONT></TD>
+</TR>
+<TR>
+  <TD width="135">HINDI</TD><TD><FONT face="arial" id="democ"></FONT></TD>
+</TR>
+<TR>
+  <TH colspan="100" width="240"> RESULT </TH>
+</TR>
+<TR>
+  <TD width="135">TOTAL</TD><TD> <FONT face="arial" id="demototal"></FONT></TT></TD>
+</TR>
+<TR>
+  <TD width="135">PERCENTAGE</TD><TD><FONT face="arial" id="demoper"></FONT></TD>
+</TR>
+<TR>
+  <TD width="135">GRADE</TD><TD><FONT face="arial" id="demograde"></FONT></TD>
+</TR>
+</TABLE>
+</body>
+</html>
